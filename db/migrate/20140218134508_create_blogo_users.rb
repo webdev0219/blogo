@@ -1,4 +1,4 @@
-class CreateBlogoUsers < ActiveRecord::Migration
+class CreateBlogoUsers < ActiveRecord::Migration[5.2]
   def change
     users_table = "#{Blogo.table_name_prefix}users"
 
