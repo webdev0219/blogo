@@ -1,17 +1,17 @@
 <aside>
-  <% if @recent_posts %>
+  <% if @paginator %>
     <header>
-      <h1><%= t('blogo.user.recent_posts') %></h1>
+      <h1><%= t('blogo.user.all_posts') %></h1>
     </header>
     <ul class="blogo-recent-posts">
-      <% @recent_posts.each do |post| %>
+      <% @paginator.items.each do |post| %>
         <li>
           <%= link_to post.title, blogo_post_path(post) %>
         </li>
       <% end %>
     </ul>
   <% end %>
-
+  <%= render partial: 'paginator' %>
 
   <header>
     <h1><%= t('blogo.user.tags') %></h1>

@@ -6,6 +6,7 @@ en:
       post_by: 'By'
       read_post: 'Read ➞'
       recent_posts: 'Recent posts'
+      all_posts: All posts
       tags: 'Tags'
 
     admin:

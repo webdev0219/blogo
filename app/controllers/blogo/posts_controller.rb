@@ -1,7 +1,7 @@
 module Blogo
   # Responsible for showing posts and atom feeds to visitors.
   class PostsController < Blogo::ApplicationController
-    layout 'blogo/blog'
+    layout :resolve_layout
 
     # Number of posts shown in feed.
     FEED_POSTS_LIMIT = 20
@@ -18,6 +18,7 @@ module Blogo
       @meta[:site_name] = Blogo.config.site_title
       @meta[:keywords]  = Blogo.config.keywords
       @meta[:type]      = 'website'
+      @last_post        = Post.last
     end
 
     # GET /posts/:permalink
@@ -82,5 +83,14 @@ module Blogo
         "#{request.protocol}#{request.host}#{@post.meta_image}"
       end
     end
+
+     def resolve_layout
+       case action_name
+       when "show"
+         "blogo/blog_show"
+       else
+         "blogo/blog"
+       end
+     end
   end
 end
